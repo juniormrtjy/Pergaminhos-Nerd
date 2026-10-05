@@ -1,0 +1,9 @@
+/* Pequenas descobertas do reino. Edite aqui sem alterar os componentes principais. */
+(() => {
+ const {toast,dialog,storage}=window.Realm;
+ document.querySelector("[data-compass]")?.addEventListener("click",()=>dialog("A bússola das ideias","Norte: o que você quer aprender. Sul: aquilo que você já deixou para trás. Se a agulha estiver indecisa, comece pela curiosidade.","star"));
+ let cups=0;document.querySelector("[data-coffee]")?.addEventListener("click",()=>{cups++;toast(cups%3===0?"Poção refinada: +10 concentração, +1 vontade de escrever.":"Café equipado. Respire. A quest pode esperar um minuto.");});
+ let sequence="";document.addEventListener("keydown",event=>{if(event.target.closest("input,textarea,select,[contenteditable]")||event.ctrlKey||event.metaKey||document.querySelector("dialog[open]"))return;if(event.key.length!==1)return;sequence=(sequence+event.key.toLowerCase()).slice(-4);if(sequence==="cafe"){toast("Receita secreta descoberta: café + curiosidade = uma boa ideia.");sequence="";}});
+ const patience=document.getElementById("stat-2");if(patience){const wrapper=patience.parentElement;const button=document.createElement("button");button.type="button";button.className="attribute-secret";button.textContent="✧";button.setAttribute("aria-label","Examinar atributo paciência");wrapper.append(button);button.addEventListener("click",()=>toast("Você esperou por uma recompensa. Paciência +1. O servidor ainda está calculando."));}
+ const visited=storage.get("visited",[]);if(visited.filter(x=>["city","library","tavern","inventory","about"].includes(x)).length===5&&!storage.get("cartographer")){storage.set("cartographer",true);toast("Título descoberto: Cartógrafo de Pequenos Mundos.");}
+})();

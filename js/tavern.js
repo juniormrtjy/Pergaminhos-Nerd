@@ -1,0 +1,1 @@
+window.ROBB_POSTS.filter(post=>["Cotidiano","Tecnologia"].includes(post.category)).forEach(post=>document.getElementById("tavern-posts").append(window.Realm.card(post)));
