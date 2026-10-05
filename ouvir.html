@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Explore Pergaminhos Nerd com uma trilha do Spotify escolhida por você."><meta name="theme-color" content="#263d33"><title>Sala do Bardo · Pergaminhos Nerd</title><link rel="icon" href="assets/icons/crest.svg"><link rel="stylesheet" href="css/styles.css"><link rel="stylesheet" href="css/music.css"><script defer src="js/music-config.js"></script><script defer src="js/radio.js"></script></head>
+<body class="radio-shell" data-music-shell="true">
+<main><iframe id="realm-view" class="realm-view" title="Pergaminhos Nerd — páginas do blog"></iframe></main>
+<aside class="music-dock" aria-label="Sala do Bardo — player de música">
+<section class="music-panel" id="music-panel" aria-labelledby="music-title">
+<div class="music-panel-heading"><div><h2 id="music-title">Sala do Bardo</h2><p>Sua trilha para explorar o reino.</p></div><button id="music-collapse" class="icon-button" type="button" aria-label="Recolher player">−</button></div>
+<div id="spotify-embed" class="spotify-embed"></div>
+<p id="music-status" class="music-status" role="status">Escolha uma trilha abaixo. A música só começa quando você apertar play.</p>
+<details id="music-choice" class="music-choice"><summary>Escolher ou trocar a trilha</summary><form id="music-form" class="music-form"><label for="spotify-link">Link da playlist, álbum ou música</label><input id="spotify-link" name="spotify" type="url" required maxlength="500" autocomplete="off" placeholder="https://open.spotify.com/playlist/…"><button class="button" type="submit">Carregar no Spotify ↗</button></form></details>
+<div class="music-panel-links"><a id="spotify-external" target="_blank" rel="noopener noreferrer" hidden>Abrir no Spotify ↗</a><a id="music-exit" href="index.html" target="_top">Sair do modo música</a></div>
+</section>
+<button class="music-toggle" id="music-toggle" type="button" aria-controls="music-panel" aria-expanded="true"><img src="assets/icons/music.svg" alt="" width="24" height="24"><span>Recolher player</span></button>
+</aside><noscript><p class="radio-noscript">Ative o JavaScript para usar o player. <a href="index.html">Voltar ao blog</a></p></noscript>
+</body></html>

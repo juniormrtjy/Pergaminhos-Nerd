@@ -1,0 +1,19 @@
+/* Player opt-in da Sala do Bardo. O visual do blog permanece independente do Spotify. */
+.music-launcher{position:fixed;right:20px;bottom:20px;z-index:25;display:flex;align-items:center;gap:10px;min-height:46px;padding:9px 15px;background:var(--forest-deep);color:#f5e8c8;border:1px solid var(--gold);box-shadow:0 5px 20px #172a252b;font-size:12px;border-radius:3px}
+.music-launcher img{width:24px;height:24px}.music-launcher-note{font-size:9px;color:#dfcd9d;border-left:1px solid #dccca655;padding-left:10px}
+body.music-session{padding-bottom:65px}
+body.radio-shell{margin:0;overflow:hidden;background:var(--paper)}
+.realm-view{position:fixed;inset:0;width:100%;height:100dvh;border:0;display:block;background:var(--paper)}
+.music-dock{position:fixed;right:max(18px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));z-index:45;width:min(390px,calc(100% - 32px))}
+.music-panel{background:var(--surface);border:1px solid var(--gold);padding:18px;box-shadow:0 8px 45px #172a2550;margin-bottom:9px;max-height:calc(100dvh - 95px);overflow:auto;border-radius:3px}
+.music-panel[hidden]{display:none}.music-panel-heading{display:flex;align-items:start;justify-content:space-between;gap:15px;margin-bottom:15px}
+.music-panel-heading h2{font-size:25px;margin:0 0 4px}.music-panel-heading p{font-size:11px;color:var(--muted);margin:0}
+.music-panel-heading button{flex-shrink:0;border-color:var(--line);min-height:36px}
+.spotify-embed:empty{display:none}.spotify-embed iframe{display:block;width:100%;height:152px;border:0;border-radius:12px;background:#202020}
+.music-status{font-size:11px;line-height:1.7;margin:13px 0;color:var(--muted)}.music-status[data-error="true"]{color:var(--wine)}
+.music-choice{border-top:1px solid var(--line);padding-top:10px}.music-choice summary{cursor:pointer;font-size:11px;font-weight:650;min-height:32px}
+.music-form label{display:block;font-size:11px;margin:8px 0 7px}.music-form input{width:100%;min-height:46px;padding:11px 12px;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:2px;font-size:12px;min-width:0}.music-form .button{margin-top:10px;width:100%;font-size:11px}
+.music-panel-links{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:12px;font-size:10px}.music-panel-links a{text-decoration:underline;text-underline-offset:3px}.music-panel-links a[hidden]{display:none}
+.music-toggle{display:flex;align-items:center;justify-content:center;gap:9px;min-height:46px;width:100%;background:var(--forest-deep);color:#f5e8c8;border:1px solid var(--gold);padding:10px 16px;font-size:12px;border-radius:3px;box-shadow:0 5px 20px #172a2530}.music-toggle img{width:24px;height:24px}
+.radio-noscript{position:relative;padding:25px;background:var(--surface);z-index:50}
+@media(max-width:767px){.music-launcher{right:14px;bottom:14px}.music-dock{right:16px;bottom:max(12px,env(safe-area-inset-bottom))}.music-panel{padding:16px}.site-header .brand{min-width:0}.site-header .brand span{white-space:normal;line-height:1.15}.header-actions{flex-shrink:0}}

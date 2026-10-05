@@ -21,6 +21,9 @@ Abra http://localhost:8000. Live Server do editor ou qualquer servidor estático
 - sobre.html: ficha provisória de Paulo / Robb.
 - inventario.html: favoritos em slots e modais.
 - taverna.html: notas curtas e Sala do Bardo.
+- ouvir.html: sessão de navegação com player persistente do Spotify.
+- js/music-config.js: playlist padrão; js/music.js: entrada opt-in; js/radio.js: sessão musical.
+- css/music.css: botão flutuante e player responsivo.
 - posts/: seis páginas de leitura independentes.
 - css/styles.css: tokens, layouts, dia/noite, mapa, header e footer.
 - css/components.css: mural, slots, leitor, formulários e diálogos.
@@ -154,4 +157,32 @@ XP é uma brincadeira: +100 quando o fim do texto entra na viewport, não uma pr
 
 Teste cidade, Biblioteca, inventário, ficha, taverna e todos os posts em 320, 375, 768, 1024 e 1440 px. Confira busca sem acentos, categorias, ano, mês, vazio, favoritos salvos, modal por teclado, persistência do tema, menu mobile, XP no final e comentários após recarregar. Caminhos devem funcionar também dentro de um subdiretório.
 
-O modo público requer configuração do seu Supabase. O site não faz requisições externas por padrão.
+O modo público requer configuração do seu Supabase. O site não faz requisições externas antes da escolha de abrir o player; nessa sessão, o embed se conecta ao Spotify.
+
+## Spotify — Sala do Bardo
+
+O botão flutuante “Sala do Bardo” abre o modo música. Cole o link público de uma playlist, álbum ou música e clique em Carregar no Spotify. Depois use os controles **Play/Pause do player oficial**. A reprodução nunca é iniciada automaticamente pelo blog.
+
+Para definir sua trilha padrão, edite js/music-config.js:
+
+~~~js
+window.PERGAMINHOS_MUSIC_CONFIG = {
+  spotifyUrl: "https://open.spotify.com/playlist/ID_DA_SUA_PLAYLIST"
+};
+~~~
+
+Use o link completo de open.spotify.com, não código HTML, Spotify URI ou link encurtado. Também aceitamos links localizados, como /intl-pt/track/ID. Não precisa de chave de API, token, SDK ou backend. Vazio permite ao visitante escolher sua própria trilha. A escolha é guardada somente na sessão desta aba.
+
+### Música durante a navegação
+
+ouvir.html mantém o embed do Spotify fora de um iframe de conteúdo do próprio blog. Links internos abrem dentro desse conteúdo, preservando o mesmo player enquanto você muda de página. Não transformamos o blog em SPA nem interceptamos todos os links. Busca, comentários, favoritos, tema e leitura continuam nos arquivos HTML originais.
+
+“Recolher player” mantém o embed montado; reabra para acessar Play/Pause. “Sair do modo música” volta para a página atual do blog e encerra o player. Recarregar a página inteira, sair do site ou fechar a aba interrompe a sessão; o blog não tenta retomar áudio automaticamente.
+
+A URL de ouvir.html guarda a página atual em ?pagina=..., e aceita somente páginas HTML dentro deste projeto. Os links do player aceitam apenas tracks, álbuns e playlists em HTTPS no domínio oficial do Spotify.
+
+Prefira testar por HTTP ou GitHub Pages: file:// pode restringir acesso entre frames. O modo musical usa internet e a reprodução disponível depende do Spotify, do navegador e da sessão/conta do visitante. Não garantimos faixa integral ou disponibilidade de qualquer conteúdo.
+
+A conexão ao Spotify só começa depois de abrir o modo música e carregar uma trilha. Sem escolha, nenhum iframe externo é criado. O serviço pode usar seus próprios cookies e sua sessão Spotify.
+
+Referência oficial: [Criar um embed do Spotify](https://developer.spotify.com/documentation/embeds/tutorials/creating-an-embed).
